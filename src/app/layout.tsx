@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "./_component/Header";
+import { AnimatePresence } from "framer-motion";
+import ThreeScene from "./_component/ThreeScene";
+import ReactThreeScene from "./_component/ReactThreeScene";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,8 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased transition-all duration-500 ease-in-out dark:bg-gray-800 dark:bg-[url('./_img/stars.png')]`}
       >
+        <Header />
+        <ReactThreeScene />
         {children}
       </body>
     </html>
