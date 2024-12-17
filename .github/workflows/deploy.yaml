@@ -89,4 +89,6 @@ jobs:
         with:
           # context: .
           push: true
-          tags: ghcr.io/mdm17/personal-homepage:${{ needs.commit-hash.outputs.commit_hash }}
+          tags: |
+            ghcr.io/mdm17/personal-homepage:${{ needs.commit-hash.outputs.commit_hash }}
+            ghcr.io/mdm17/personal-homepage:latest
