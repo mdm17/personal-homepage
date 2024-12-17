@@ -1,6 +1,6 @@
 services:
   server:
-    image: ghcr.io/mdm17/personal-homepage/personal-homepage
+    image: ghcr.io/mdm17/personal-homepage:latest
     container_name: personal-homepage
     ports:
       - 3000:3000
