@@ -15,4 +15,4 @@ services:
   personal-homepage:
     image: ghcr.io/mdm17/personal-homepage:latest
     labels:
-      - "traefik.http.routers.guestbook.rule=Host(`mdm17.my.id`)"
+      - "traefik.http.routers.personal-homepage.rule=Host(`mdm17.my.id`)"
