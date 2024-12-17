@@ -14,3 +14,5 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
   personal-homepage:
     image: ghcr.io/mdm17/personal-homepage:latest
+    labels:
+      - "traefik.http.routers.guestbook.rule=Host(`mdm17.my.id`)"
