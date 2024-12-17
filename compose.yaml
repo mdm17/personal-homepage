@@ -1,4 +1,13 @@
 services:
+  watchtower:
+    image: containrrr/watchtower
+    command:
+      - "--label-enable"
+      - "--interval"
+      - "30"
+      - "--rolling-restart"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
   reverse-proxy:
     image: traefik:v3.2.3
     command: 
@@ -29,5 +38,6 @@ services:
       - "traefik.http.routers.personal-homepage.rule=Host(`mdm17.my.id`)"
       - "traefik.http.routers.personal-homepage.entrypoints=websecure"
       - "traefik.http.routers.personal-homepage.tls.certresolver=myresolver"
+      - "com.centurylinklabs.watchtower.enable=true"
 volumes:
   letsencrypt:
