@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./_component/Header";
-import { AnimatePresence } from "framer-motion";
-import ThreeScene from "./_component/ThreeScene";
 import ReactThreeScene from "./_component/ReactThreeScene";
 
 const geistSans = localFont({

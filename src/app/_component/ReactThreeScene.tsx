@@ -1,11 +1,9 @@
 "use client"
 import { Canvas } from "@react-three/fiber";
-import React, { useRef, useEffect, useMemo, useState } from "react";
-import Box from "./Box";
+import React, { useEffect, useMemo, useState } from "react";
 import ThreeGlobe from "three-globe";
 import * as THREE from 'three';
-import { TrackballControls } from "three/examples/jsm/Addons.js";
-import { OrbitControls, PointerLockControls } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { usePathname } from "next/navigation";
 
 const ReactThreeScene: React.FC = () => {

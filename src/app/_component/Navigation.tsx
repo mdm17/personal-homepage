@@ -1,5 +1,5 @@
 "use client";
-import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "./NoScrollLink";
 import { isActiveLink } from "../_lib/utils";
 import { usePathname } from "next/navigation";
