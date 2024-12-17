@@ -27,7 +27,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.personal-homepage.rule=Host(`mdm17.my.id`)"
-      - "traefik.http.routers.guestbook.entrypoints=websecure"
-      - "traefik.http.routers.guestbook.tls.certresolver=myresolver"
+      - "traefik.http.routers.personal-homepage.entrypoints=websecure"
+      - "traefik.http.routers.personal-homepage.tls.certresolver=myresolver"
 volumes:
   letsencrypt:
