@@ -1,6 +1,16 @@
 services:
-  server:
-    image: ghcr.io/mdm17/personal-homepage:latest
-    container_name: personal-homepage
+  reverse-proxy:
+    image: traefik:v3.2.3
+    command: 
+      - "--api.insecure=true"
+      - "--providers.docker"
     ports:
-      - 3000:3000
+    # HTTP Port
+      - "80:80"
+    # Web UI Port (enabled by --api.insecure=true)
+      - "8080:8080"
+    volumes:
+    #For Traefik can Listen Docker events
+      - /var/run/docker.sock:/var/run/docker.sock
+  personal-homepage:
+    image: ghcr.io/mdm17/personal-homepage:latest
