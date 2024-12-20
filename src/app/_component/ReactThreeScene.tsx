@@ -34,7 +34,7 @@ const ReactThreeScene: React.FC = () => {
     }, [router]);
 
     return (
-        <div className="h-3/4 w-full xl:w-2/6 -bottom-72 xl:bottom-0 absolute">
+        <div className="h-3/4 w-full xl:w-2/6 -bottom-64 xl:bottom-0 absolute">
             <Canvas camera={useMemo(() => ({ position: [0, 0, 250] }), [])} scene={globe}>
                 <OrbitControls enableZoom={false} dampingFactor={0.1} autoRotate={true} rotateSpeed={0.3} />
                 <ambientLight intensity={Math.PI} />
