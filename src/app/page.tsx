@@ -4,10 +4,10 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="relative bg-black bg-opacity-55 dark:bg-white dark:bg-opacity-10 p-5 xl:p-16 rounded-lg" id="profile">
+    <div className="relative bg-black bg-opacity-40 dark:bg-white dark:bg-opacity-20 p-5 xl:p-16 rounded-lg" id="profile">
       <div className="flex flex-col">
         <Image
-          className="h-32 md:h-52 w-auto mx-auto rounded-full shadow-lg  shadow-slate-500 transition ease-in-out duration-150 hover:-translate-y-1 hover:ease-in hover:scale-125"
+          className="h-40 md:h-52 w-auto mx-auto rounded-full shadow-lg  shadow-slate-500 transition ease-in-out duration-150 hover:-translate-y-1 hover:ease-in hover:scale-125"
           src={profilePict}
           alt="diky"
         />

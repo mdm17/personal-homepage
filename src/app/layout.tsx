@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} max-h-screen fixed antialiased transition-all duration-500 ease-in-out dark:bg-gray-800 dark:bg-[url('./_img/stars.png')]`}
+        className={`${geistSans.variable} ${geistMono.variable} max-h-screen antialiased transition-all duration-500 ease-in-out dark:bg-gray-800 dark:bg-[url('./_img/stars.png')]`}
       >
         <Header />
         <ReactThreeScene />
