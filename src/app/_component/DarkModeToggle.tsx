@@ -12,18 +12,23 @@ const getThemeString = (isDark: boolean): string => (isDark ? "dark" : "light");
 const DarkModeToggle = (): JSX.Element => {
   const [isDarkMode, setDarkMode] = useState(false);
 
-  const toggleMode = (): void => {
-    localStorage.theme = getThemeString(!isDarkMode);
+  const checkTheme = (): void => {
     if (localStorage.theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
+  }
+
+  const toggleMode = (): void => {
+    localStorage.theme = getThemeString(!isDarkMode);
+    checkTheme();
     setDarkMode(!isDarkMode);
   };
 
   useEffect(() => {
     setDarkMode(isDark());
+    checkTheme();
   }, []);
 
   const darkModeActive: boolean =
