@@ -128,7 +128,7 @@ const Portfolio = () => {
                 </div>
                 <div className="relative flex w-full  flex-col rounded-xl bg-white bg-opacity-80 bg-clip-border text-gray-700 shadow-lg">
                     <div className="relative mx-4 rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
-                        <iframe className='h-36 md:h-72 w-full mt-3 mx-auto' src="https://www.youtube.com/embed/xzRAEXyea1k?si=9Cmuq5c_AYJ_qLb6" title="YouTube video player" frameorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe className='h-36 md:h-72 w-full mt-3 mx-auto' src="https://www.youtube.com/embed/xzRAEXyea1k?si=9Cmuq5c_AYJ_qLb6" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                     </div>
                     <div className="p-6">
                         <div className="mb-3 flex items-center justify-between">
