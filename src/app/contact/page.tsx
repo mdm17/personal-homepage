@@ -5,7 +5,7 @@ export default function Contact() {
   return (
     <div className="relative max-w-4xl mx-auto">
       <div className="grid grid-cols-6 h-full w-full">
-        <div className="bg-black  p-10 col-span-2 rounded-l-lg">
+        <div className="bg-black  p-10 col-span-6 md:col-span-2 rounded-l-lg">
           <h2 className="mb-10 font-bold text-2xl text-blue-100 before:block before:absolute before:bg-sky-300 before:content[''] relative before:w-20 before:h-1 before:-skew-y-3 before:-bottom-4">Info Kontak</h2>
           <p className="font-bold text-blue-100 py-8 border-b border-blue-700">
             Alamat
@@ -25,7 +25,7 @@ export default function Contact() {
           </p> */}
 
         </div>
-        <div className=" bg-black bg-opacity-40 dark:bg-white dark:bg-opacity-20 p-14 col-span-4 rounded-r-lg">
+        <div className=" bg-black bg-opacity-40 dark:bg-white dark:bg-opacity-20 p-14 col-span-6 md:col-span-4 rounded-r-lg">
           <h2 className="mb-14 font-bold text-4xl text-slate-300 before:block before:absolute before:bg-sky-300 before:content[''] relative before:w-20 before:h-1 before:-skew-y-3 before:-bottom-4">Hubungi Saya</h2>
           <div className="grid gap-6 mb-6 grid-cols-2">
             <div className="flex flex-col">

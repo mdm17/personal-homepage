@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./_component/Header";
 import ReactThreeScene from "./_component/ReactThreeScene";
+import Starfield from "./_component/StarField";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,12 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} max-h-screen antialiased transition-all duration-500 ease-in-out bg-gray-800`}>
-        <div className="zoom-6"></div>
-        <div className="move-10"></div>
-        <div className="twinkle-10"></div>
+        className={`${geistSans.variable} ${geistMono.variable} max-h-screen antialiased transition-all duration-500 ease-in-out `}>
         <Header />
         <ReactThreeScene />
+        <Starfield />
         {children}
       </body>
     </html>
