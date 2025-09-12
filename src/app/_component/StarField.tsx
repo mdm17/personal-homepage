@@ -17,8 +17,8 @@ export default function Starfield() {
         let stars: Star[] = [];
 
         function setCanvasSize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            canvas!.width = window.innerWidth;
+            canvas!.height = window.innerHeight;
         }
 
         function getRandomColor() {
@@ -50,40 +50,40 @@ export default function Starfield() {
             reset() {
                 this.z = maxDepth;
                 const angle = Math.random() * 2 * Math.PI;
-                const distance = Math.sqrt(Math.random()) * (canvas.width / 2);
+                const distance = Math.sqrt(Math.random()) * (canvas!.width / 2);
                 this.x = Math.cos(angle) * distance;
                 this.y = Math.sin(angle) * distance;
-                this.size = (1 - distance / (canvas.width / 2)) * 0.1 + 0.5;
+                this.size = (1 - distance / (canvas!.width / 2)) * 0.1 + 0.5;
                 this.color = getRandomColor();
             }
 
             draw() {
-                const x = ((this.x / this.z) * canvas.width) / 2 + canvas.width / 2;
-                const y = ((this.y / this.z) * canvas.height) / 2 + canvas.height / 2;
+                const x = ((this.x / this.z) * canvas!.width) / 2 + canvas!.width / 2;
+                const y = ((this.y / this.z) * canvas!.height) / 2 + canvas!.height / 2;
                 const radius = (1 - this.z / maxDepth) * this.size * 3;
-                ctx.beginPath();
-                ctx.arc(x, y, radius, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.fill();
+                ctx!.beginPath();
+                ctx!.arc(x, y, radius, 0, Math.PI * 2);
+                ctx!.fillStyle = this.color;
+                ctx!.fill();
             }
         }
 
         function initStars() {
             stars = Array.from({ length: numStars }, () => {
                 const angle = Math.random() * 2 * Math.PI;
-                const distance = Math.sqrt(Math.random()) * (canvas.width / 2);
+                const distance = Math.sqrt(Math.random()) * (canvas!.width / 2);
                 return new Star(
                     Math.cos(angle) * distance,
                     Math.sin(angle) * distance,
                     Math.random() * maxDepth,
-                    (1 - distance / (canvas.width / 2)) * 0.1 + 0.5,
+                    (1 - distance / (canvas!.width / 2)) * 0.1 + 0.5,
                     getRandomColor()
                 );
             });
         }
 
         function updateAndDrawStars() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx!.clearRect(0, 0, canvas!.width, canvas!.height);
             stars.forEach((star) => {
                 star.update();
                 star.draw();
