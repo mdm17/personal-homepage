@@ -21,7 +21,7 @@ export default function Home() {
         <div className="xl:w-1/2 m-3 mx-auto text-white text-wrap grid gap-y-5">
           <div className="">
             <h1 className="text-3xl pt-5 text-slate-300 font-semibold text-center md:text-left">
-              M Dicky Maulana (MDM)
+              M Dicky Maulana
             </h1>
             <h3 className="text-xl text-slate-300 font-medium text-center md:text-left">
               Full-Stack Developer
