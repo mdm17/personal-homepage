@@ -7,6 +7,9 @@ LABEL org.opencontainers.image.source=https://github.com/mdm17/personal-homepage
 # Set the working directory
 WORKDIR /app
 
+# Set ENV
+ENV ALIAS_NAME=$(cat /run/secrets/ALIAS_NAME)
+
 # Install dependencies
 COPY package*.json ./
 RUN npm install
