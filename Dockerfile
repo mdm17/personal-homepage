@@ -9,11 +9,8 @@ WORKDIR /app
 
 # Set ENV
 RUN --mount=type=secret,id=ALIAS_NAME \
- echo "ALIAS_NAME=$(cat /run/secrets/ALIAS_NAME)" > /tmp/.env
-
-ENV $(cat /tmp/.env | xargs)
-
-RUN echo "Nilai ALIAS_NAME adalah $ALIAS_NAME"
+  echo "NEXT_PUBLIC_ALIAS_NAME=$(cat /run/secrets/ALIAS_NAME)" > .env && \
+  echo "Isi .env:" && cat .env
 
 # Install dependencies
 COPY package*.json ./
