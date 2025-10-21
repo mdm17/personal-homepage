@@ -10,6 +10,8 @@ export default function Home() {
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
+  const alias = process.env.ALIAS_NAME;
+
   return (
     <div className="relative bg-white bg-opacity-20 p-5 xl:p-16 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm" id="profile">
       <div className="flex flex-col md:flex-row">
@@ -21,7 +23,7 @@ export default function Home() {
         <div className="xl:w-1/2 m-3 mx-auto text-white text-wrap grid gap-y-5">
           <div className="">
             <h1 className="text-3xl pt-5 text-slate-300 font-semibold text-center md:text-left">
-              M Dicky Maulana
+              M Dicky Maulana {alias ? `(${alias})` : ''}
             </h1>
             <h3 className="text-xl text-slate-300 font-medium text-center md:text-left">
               Full-Stack Developer
