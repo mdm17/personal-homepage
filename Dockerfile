@@ -8,6 +8,7 @@ LABEL org.opencontainers.image.source=https://github.com/mdm17/personal-homepage
 WORKDIR /app
 
 # Set ENV
+RUN --mount=type=secret,id=ALIAS_NAME 
 ENV ALIAS_NAME=$(cat /run/secrets/ALIAS_NAME)
 
 # Install dependencies
