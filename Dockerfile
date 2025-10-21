@@ -11,7 +11,6 @@ WORKDIR /app
 RUN --mount=type=secret,id=ALIAS_NAME \
 export ALIAS_NAME=$(cat /run/secrets/ALIAS_NAME) && \
 echo $ALIAS_NAME
-ENV ALIAS_NAME=$(cat /run/secrets/ALIAS_NAME)
 
 # Install dependencies
 COPY package*.json ./
