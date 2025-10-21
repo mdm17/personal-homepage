@@ -10,7 +10,7 @@ export default function Home() {
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
-  const alias = process.env.ALIAS_NAME;
+  const alias = process.env.NEXT_PUBLIC_ALIAS_NAME;
 
   return (
     <div className="relative bg-white bg-opacity-20 p-5 xl:p-16 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm" id="profile">
