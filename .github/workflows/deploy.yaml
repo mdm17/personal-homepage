@@ -89,6 +89,8 @@ jobs:
         with:
           context: .
           push: true
+          build-args: |
+            ALIAS_NAME=${{ secrets.ALIAS_NAME }}
           tags: |
             ghcr.io/mdm17/personal-homepage:${{ needs.commit-hash.outputs.commit_hash }}
             ghcr.io/mdm17/personal-homepage:latest
