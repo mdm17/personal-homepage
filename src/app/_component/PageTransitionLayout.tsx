@@ -1,40 +1,41 @@
-import { motion, AnimatePresence } from "framer-motion";
+"use client";
+
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ReactNode, FC } from "react";
-
-// ROUTER
 import { usePathname } from "next/navigation";
+import { contentOnRight, useWideScreen } from "../_lib/stage";
 
-// TYPES
 interface ILayoutProps {
   children: ReactNode;
 }
 
-export const PageTransitionLayout: FC<ILayoutProps> = ({ children }) => {
-  const router = usePathname();
+const slide = { type: "spring" as const, stiffness: 70, damping: 18 };
 
-  const variants = {
-    hidden: {  x: -1000, y: 0 },
-    enter: {  x: 0, y: 0 },
-    exit: {  x: 0, y: -1000 },
-}
+export const PageTransitionLayout: FC<ILayoutProps> = ({ children }) => {
+  const pathname = usePathname();
+  const wide = useWideScreen();
+  const reduceMotion = useReducedMotion();
+  const onRight = wide && contentOnRight(pathname);
 
   return (
-    <AnimatePresence mode={"wait"} onExitComplete={() => window.scrollTo(0, 0)}>
-      <motion.div
-        key={router}
-        initial="hidden"
-        animate="enter"
-        exit="exit"
-        variants={variants}
-        transition={{ type: 'linear', duration: 0.5 }}
-        className="
-                    w-full 
-                    px-8 sm:px-16 md:px-36 lg:px-52 xl:px-80 2xl:px-96
-                    pt-24 min-h-screen
-                " // Feel free to add your classes here
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <motion.div
+      className="pointer-events-none relative z-10 min-h-screen w-full max-w-3xl px-6 pb-52 pt-28 sm:px-10 lg:max-w-[40rem] lg:pb-28 xl:max-w-[42rem]"
+      initial={false}
+      animate={{ x: onRight ? "calc(100vw - 100% - 4rem)" : wide ? "2rem" : "0rem" }}
+      transition={reduceMotion ? { duration: 0 } : slide}
+    >
+      <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+        <motion.div
+          key={pathname}
+          className="pointer-events-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: reduceMotion ? 0 : 0.35, ease: "easeOut" }}
+        >
+          {children}
+        </motion.div>
+      </AnimatePresence>
+    </motion.div>
   );
 };

@@ -2,51 +2,79 @@ import Image from "next/image";
 import profilePict from "./_img/diky.jpg";
 import Link from "next/link";
 
-export default function Home() {
+const tools = [
+  { name: "Node.js", href: "https://nodejs.org/" },
+  { name: "TypeScript", href: "https://www.typescriptlang.org/" },
+  { name: "Laravel", href: "https://laravel.com/" },
+  { name: "Express", href: "https://expressjs.com/" },
+  { name: "MySQL", href: "https://www.mysql.com/" },
+  { name: "Linux", href: "https://www.kernel.org/" },
+];
 
-  function calculateAge(birthday: Date): number {
-    const ageDifMs = Date.now() - birthday.getTime();
-    const ageDate = new Date(ageDifMs); // milliseconds from epoch
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
-  }
+function calculateAge(birthday: Date): number {
+  const ageDifMs = Date.now() - birthday.getTime();
+  const ageDate = new Date(ageDifMs);
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+
+export default function Home() {
+  const years = calculateAge(new Date("2021-09-01"));
 
   return (
-    <div className="relative bg-white bg-opacity-20 p-5 xl:p-16 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm" id="profile">
-      <div className="flex flex-col md:flex-row">
-        <Image
-          className="h-40 md:h-96 w-auto md:w-96 md:mt-3 md:pt-5 mx-auto md:object-cover md:rounded-full shadow-lg  shadow-slate-500 transition ease-in-out duration-150 hover:-translate-y-1 hover:ease-in hover:scale-125"
-          src={profilePict}
-          alt="diky"
-        />
-        <div className="xl:w-1/2 m-3 mx-auto text-white text-wrap grid gap-y-5">
-          <div className="">
-            <h1 className="text-3xl pt-5 text-slate-300 font-semibold text-center md:text-left">
-              M Dicky Maulana
-            </h1>
-            <h3 className="text-xl text-slate-300 font-medium text-center md:text-left">
-              Full-Stack Developer
-            </h3>
-          </div>
-          <p>
-            Saya adalah seorang Fullstack Developer berpengalaman &#xB1; {calculateAge(new Date("2021-09-01"))} tahun di industri logistik, berdomisili di Palembang.
-            <br />
-            Saat ini saya bekerja di <Link className="text-blue-500" href={"https://siberat.id/"} target="_blank">Siberat Digital Logistik</Link> sebagai Engineering Senior Officer.
-          </p>
-          <p>
-            Berbekal keahlian dalam JavaScript,
-            PHP, SQL, dan Linux OS, serta memiliki pengalaman dalam pengembangan aplikasi menggunakan tools dan frameworks yang populer seperti
-            &nbsp;<Link className="text-blue-500" href={"https://laravel.com/"} target="_blank">Laravel</Link>,
-            &nbsp;<Link className="text-blue-500" href={"https://expressjs.com/"} target="_blank">ExpressJS</Link>,
-            &nbsp;<Link className="text-blue-500" href={"https://nextjs.org/"} target="_blank">NextJS</Link>,
-            &nbsp;<Link className="text-blue-500" href={"https://github.com/"} target="_blank">Git</Link>, dan
-            &nbsp;<Link className="text-blue-500" href={"https://www.docker.com/"} target="_blank">Docker</Link>.
-            Dengan pengalaman tersebut saya mampu menerjemahkan persyaratan bisnis menjadi arsitektur yang skalabel, dan berpengalaman dalam berkolaborasi antar tim untuk mengembangkan aplikasi web yang aman dan berperforma tinggi.
-          </p>
-          <p>Saya juga memiliki semangat yang tinggi untuk mempelajari teknologi baru dan terus meningkatkan keahlian guna menghadapi tantangan industri yang dinamis.
-            Berbekal pengalaman dan kemampuan ini, saya percaya dapat memberikan kontribusi signifikan dalam menciptakan proyek-proyek inovatif dan solusi berdampak nyata.
+    <article id="profile" className="glass rounded-sm p-6 sm:p-10">
+      <div className="flex flex-col gap-6">
+        <div>
+          <h1 className="font-display text-4xl font-medium leading-tight text-starlight sm:text-5xl">
+            M Dicky Maulana
+          </h1>
+          <p className="mt-3 text-lg text-dust">
+            Pengembang perangkat lunak full-stack, Palembang
           </p>
         </div>
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+        <Image
+          className="h-28 w-28 shrink-0 rounded-full object-cover ring-1 ring-starlight/30"
+          src={profilePict}
+          alt="Foto M Dicky Maulana"
+          priority
+        />
+        <div className="text-starlight/90">
+          <p className="leading-relaxed">
+            Saya lulusan D4 Manajemen Informatika dari Politeknik Negeri Sriwijaya. Selama {years} tahun saya mengembangkan aplikasi web, utamanya untuk operasional logistik, dan saat ini menjabat Engineering Senior Officer di{" "}
+            <Link className="text-ice underline decoration-ice/40 underline-offset-4 hover:decoration-ice" href="https://siberat.id/" target="_blank">
+              Siberat Digital Logistik
+            </Link>.
+          </p>
+          <p className="mt-4 leading-relaxed">
+            Keahlian utama saya berada di pengembangan backend: Node.js, TypeScript, dan Laravel, termasuk integrasi sistem dan solusi RAG. Saya merancang arsitektur yang tetap dapat dikembangkan seiring pertumbuhan tim dan data.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              href="/portfolio"
+              className="bg-dust px-5 py-2.5 text-sm font-medium text-void hover:bg-starlight"
+            >
+              Lihat portofolio
+            </Link>
+            <Link
+              href="/riwayat"
+              className="px-5 py-2.5 text-sm text-ice underline decoration-ice/40 underline-offset-4 hover:decoration-ice"
+            >
+              Lihat riwayat
+            </Link>
+          </div>
+          <p className="mt-8 text-sm text-dust">Teknologi</p>
+          <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+            {tools.map((tool) => (
+              <li key={tool.name}>
+                <Link className="text-ice underline decoration-ice/40 underline-offset-4 hover:decoration-ice" href={tool.href} target="_blank">
+                  {tool.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        </div>
       </div>
-    </div>
+    </article>
   );
 }

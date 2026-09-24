@@ -6,16 +6,20 @@ import { usePathname } from "next/navigation";
 
 const links: { name: string; href: string }[] = [
   {
-    name: "Home",
+    name: "Beranda",
     href: "/"
   },
   {
-    name: "Contact",
-    href: "/contact"
+    name: "Riwayat",
+    href: "/riwayat"
   },
   {
-    name: "Portfolio",
+    name: "Portofolio",
     href: "/portfolio"
+  },
+  {
+    name: "Kontak",
+    href: "/contact"
   }
 ];
 
@@ -24,10 +28,10 @@ const Navigation = (): JSX.Element => {
 
   return (
     <AnimatePresence>
-      <nav className="flex">
+      <nav className="flex gap-x-3 sm:gap-x-6">
         {links.map(({ name, href }) =>
           <Link key={name} href={href}>
-            <div className="mr-6 sm:mr-8 flex flex-col relative">
+            <div className="relative text-xs text-starlight/80 hover:text-starlight sm:text-sm">
               {name}
               {isActiveLink(href, router) &&
                 <motion.div

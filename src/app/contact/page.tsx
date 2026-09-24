@@ -1,56 +1,67 @@
-import React from 'react'
+import type { Metadata } from "next";
+import ContactForm from "../_component/ContactForm";
+import { profile } from "../_data/cv";
 
+export const metadata: Metadata = {
+  title: "Kontak — M Dicky Maulana",
+  description:
+    "Kontak M Dicky Maulana, pengembang perangkat lunak full-stack di Palembang.",
+};
 
 export default function Contact() {
   return (
-    <div className="relative max-w-4xl mx-auto">
-      <div className="grid grid-cols-6 h-full w-full">
-        <div className="bg-black  p-10 col-span-6 md:col-span-2 rounded-l-lg">
-          <h2 className="mb-10 font-bold text-2xl text-blue-100 before:block before:absolute before:bg-sky-300 before:content[''] relative before:w-20 before:h-1 before:-skew-y-3 before:-bottom-4">Info Kontak</h2>
-          <p className="font-bold text-blue-100 py-8 border-b border-blue-700">
-            Alamat
-            <span className="font-normal text-xs text-white block">Palembang, Indonesia</span>
-          </p>
-          <p className="font-bold text-blue-100 py-8 border-b border-blue-700">
-            No. Telpon
-            <span className="font-normal text-xs text-white block">+62 896 4343 1414</span>
-          </p>
-          <p className="font-bold text-blue-100 py-8 border-b border-blue-700">
-            Email
-            <span className="font-normal text-xs text-white block">diky.maulana88@gmail.com</span>
-          </p>
-          {/* <p className="font-bold text-blue-100 py-8 border-b border-blue-700">
-            Sosial Media
-            <span className="font-normal text-xs text-white block">zigzagexampl.com</span>
-          </p> */}
-
-        </div>
-        <div className=" bg-black bg-opacity-40 dark:bg-white dark:bg-opacity-20 p-14 col-span-6 md:col-span-4 rounded-r-lg">
-          <h2 className="mb-14 font-bold text-4xl text-slate-300 before:block before:absolute before:bg-sky-300 before:content[''] relative before:w-20 before:h-1 before:-skew-y-3 before:-bottom-4">Hubungi Saya</h2>
-          <div className="grid gap-6 mb-6 grid-cols-2">
-            <div className="flex flex-col">
-              <input className="py-4 bg-gray-600 dark:bg-gray-400 rounded-full px-6 placeholder:text-xs" aria-placeholder="Votre nom" placeholder="Nama" />
-            </div>
-            <div className="flex flex-col">
-              <input className="py-4 bg-gray-600 dark:bg-gray-400 rounded-full px-6 placeholder:text-xs" aria-placeholder="Votre nom" placeholder="No HP" />
-            </div>
+    <div className="glass overflow-hidden rounded-sm">
+      <aside className="border-b border-starlight/15 p-8">
+        <h1 className="font-display text-3xl text-starlight">Kontak</h1>
+        <p className="mt-3 max-w-reading leading-relaxed text-starlight/80">
+          Silakan menghubungi saya untuk diskusi profesional atau kerja sama. Saya akan membalas melalui email.
+        </p>
+        <dl className="mt-6 grid gap-6 text-sm sm:grid-cols-2">
+          <div className="sm:col-span-2">
+            <dt className="text-dust">Alamat</dt>
+            <dd className="mt-1 text-starlight">{profile.address}</dd>
           </div>
-          <div className="grid gap-6 mb-6 grid-cols-2">
-            <div className="flex flex-col">
-              <input className="py-4 bg-gray-600 dark:bg-gray-400 rounded-full px-6 placeholder:text-xs" aria-placeholder="Votre nom" placeholder="Email" />
-            </div>
-            <div className="flex flex-col">
-              <input className="py-4 bg-gray-600 dark:bg-gray-400 rounded-full px-6 placeholder:text-xs" aria-placeholder="Votre nom" placeholder="Subject" />
-            </div>
+          <div>
+            <dt className="text-dust">Telepon</dt>
+            <dd className="mt-1">
+              <a className="text-starlight underline decoration-starlight/30 underline-offset-4" href={profile.phoneHref}>
+                {profile.phone}
+              </a>
+            </dd>
           </div>
-          <div className="mb-6">
-            <textarea className="w-full bg-gray-600 dark:bg-gray-400 rounded-2xl placeholder:text-xs px-6 py-4" placeholder="Pesan" name="" id="" rows={8}></textarea>
+          <div>
+            <dt className="text-dust">Email</dt>
+            <dd className="mt-1">
+              <a className="text-starlight underline decoration-starlight/30 underline-offset-4" href={`mailto:${profile.email}`}>
+                {profile.email}
+              </a>
+            </dd>
           </div>
-          <div className="flex justify-center">
-            <button className="rounded-full bg-blue-900 text-white font-bold py-4 px-6 min-w-40 hover:bg-blue-800 transition-all">Kirim</button>
+          <div>
+            <dt className="text-dust">LinkedIn</dt>
+            <dd className="mt-1">
+              <a className="text-starlight underline decoration-starlight/30 underline-offset-4" href={profile.linkedin} target="_blank">
+                linkedin.com/in/mdm-1707
+              </a>
+            </dd>
           </div>
-        </div>
+          <div>
+            <dt className="text-dust">CV</dt>
+            <dd className="mt-1">
+              <a className="text-starlight underline decoration-starlight/30 underline-offset-4" href={profile.cvHref}>
+                Unduh curriculum vitae
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </aside>
+      <div className="p-8">
+        <h2 className="font-display text-3xl text-starlight">Kirim pesan</h2>
+        <p className="mt-3 max-w-reading leading-relaxed text-starlight/80">
+          Lengkapi nama dan keperluan Anda.
+        </p>
+        <ContactForm />
       </div>
     </div>
-  )
+  );
 }

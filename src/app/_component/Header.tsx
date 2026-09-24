@@ -4,22 +4,18 @@ import Navigation from './Navigation'
 
 const Header = (): JSX.Element => (
     <header
-        className="
-        w-full fixed bg-transparent flex flex-row justify-between items-center
-        h-16 md:h-20 z-50
-        px-8 sm:px-16 md:px-36 lg:px-52 xl:px-80 2xl:px-96
-       text-white
-    "
+        className="site-header fixed top-0 z-50 w-full text-starlight"
     >
+        <div className="flex h-16 w-full items-center justify-between px-6 sm:h-20 sm:px-10 lg:px-16">
         <Link href="/">
-            <p>
-                <span className="block sm:hidden">MDM</span>
-                <span className="hidden sm:block">M Dicky Maulana</span>
+            <p className="font-display text-lg tracking-tight">
+                <span className="sm:hidden">MDM</span>
+                <span className="hidden sm:inline">M Dicky Maulana</span>
             </p>
         </Link>
         <div className="flex flex-row items-center">
             <Navigation />
-            {/* <DarkModeToggle /> */}
+        </div>
         </div>
     </header>
 )

@@ -3,18 +3,89 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #05060a;
+  --foreground: #f4efe6;
+  --starlight: #f4efe6;
+  --dust: #e8c9a0;
+  --ice: #9ec9e8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background-color: #000;
+  color: var(--starlight);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Soft nebula wash above the starfield canvas, transparent enough that stars stay visible. */
+.galaxy-wash {
+  position: fixed;
+  inset: 0;
+  z-index: -40;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 62% 78% at 78% 52%, rgba(56, 78, 168, 0.55), transparent 64%),
+    radial-gradient(ellipse 48% 42% at 88% 18%, rgba(126, 52, 120, 0.38), transparent 62%),
+    radial-gradient(ellipse 36% 40% at 6% 88%, rgba(36, 64, 140, 0.32), transparent 68%),
+    radial-gradient(ellipse 28% 24% at 18% 12%, rgba(180, 110, 90, 0.16), transparent 70%);
+}
+
+.globe-stage::before {
+  content: "";
+  position: absolute;
+  inset: 12% 18%;
+  z-index: -1;
+  background: radial-gradient(circle, rgba(110, 160, 230, 0.42), rgba(80, 40, 120, 0.12) 46%, transparent 70%);
+  filter: blur(8px);
+}
+
+.site-header {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.35) 70%, transparent 100%);
+}
+
+.glass {
+  background: rgba(6, 10, 22, 0.78);
+  border: 1px solid rgba(244, 239, 230, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.navigation-underline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: var(--dust);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--ice);
+  outline-offset: 3px;
+}
+
+.field {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(244, 239, 230, 0.18);
+  color: var(--starlight);
+  border-radius: 2px;
+  padding: 0.75rem 0.9rem;
+}
+
+.field::placeholder {
+  color: rgba(244, 239, 230, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
-
-body{
-  background-color: #000;
-}
-
