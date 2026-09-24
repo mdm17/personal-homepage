@@ -7,6 +7,11 @@ LABEL org.opencontainers.image.source=https://github.com/mdm17/personal-homepage
 # Set the working directory
 WORKDIR /app
 
+# Set ENV
+RUN --mount=type=secret,id=ALIAS_NAME \
+  echo "NEXT_PUBLIC_ALIAS_NAME=$(cat /run/secrets/ALIAS_NAME)" > .env && \
+  echo "Isi .env:" && cat .env
+
 # Install dependencies
 COPY package*.json ./
 RUN npm install
