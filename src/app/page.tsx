@@ -20,8 +20,6 @@ function calculateAge(birthday: Date): number {
 export default function Home() {
   const years = calculateAge(new Date("2021-09-01"));
 
-  const alias = process.env.NEXT_PUBLIC_ALIAS_NAME;
-
   return (
     <article id="profile" className="glass rounded-sm p-6 sm:p-10">
       <div className="flex flex-col gap-6">
@@ -30,7 +28,7 @@ export default function Home() {
             M Dicky Maulana
           </h1>
           <p className="mt-3 text-lg text-dust">
-            Pengembang perangkat lunak full-stack, Palembang
+            Full-Stack Developer, Palembang
           </p>
         </div>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
