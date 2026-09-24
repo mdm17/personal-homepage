@@ -30,13 +30,59 @@ body {
     radial-gradient(ellipse 28% 24% at 18% 12%, rgba(180, 110, 90, 0.16), transparent 70%);
 }
 
+.globe-stage {
+  height: 58vh;
+}
+
+.globe-stage canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+@media (min-width: 640px) {
+  .globe-stage {
+    height: 64vh;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --globe-size: min(90vh, 54vw);
+    --card-size: clamp(44rem, calc(100vw - var(--globe-size) + 4vh), 72rem);
+  }
+
+  .stage-card {
+    width: var(--card-size);
+    max-width: none;
+    transform: translateX(calc(100vw - var(--globe-size) - var(--card-size) + 8vh));
+    transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .stage-card.on-right {
+    transform: translateX(calc(100vw - var(--card-size) - 1.25rem));
+  }
+
+  .globe-stage {
+    top: 5vh;
+    right: auto;
+    width: var(--globe-size);
+    height: var(--globe-size);
+    left: calc(100vw - var(--globe-size) + 3vh);
+    transition: left 0.85s cubic-bezier(0.22, 1, 0.36, 1), width 0.85s cubic-bezier(0.22, 1, 0.36, 1), height 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .globe-stage.on-left {
+    left: -3vh;
+  }
+}
+
 .globe-stage::before {
   content: "";
   position: absolute;
   inset: 12% 18%;
   z-index: -1;
   background: radial-gradient(circle, rgba(110, 160, 230, 0.42), rgba(80, 40, 120, 0.12) 46%, transparent 70%);
-  filter: blur(8px);
 }
 
 .site-header {
@@ -44,10 +90,8 @@ body {
 }
 
 .glass {
-  background: rgba(6, 10, 22, 0.78);
+  background: rgba(6, 10, 22, 0.88);
   border: 1px solid rgba(244, 239, 230, 0.14);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
 }
 
 .navigation-underline {

@@ -5,17 +5,16 @@ import ThreeGlobe from "three-globe";
 import * as THREE from 'three';
 import { OrbitControls } from "@react-three/drei";
 import { usePathname } from "next/navigation";
-import { motion, useReducedMotion } from "framer-motion";
-import { contentOnRight, useWideScreen } from "../_lib/stage";
+import { contentOnRight } from "../_lib/stage";
 
 const ReactThreeScene: React.FC = () => {
-    const [globe, setglobe] = useState({})
+    const [globe, setglobe] = useState<THREE.Scene | null>(null)
     const pathname = usePathname();
-    const wide = useWideScreen();
-    const reduceMotion = useReducedMotion();
-    const onLeft = wide && contentOnRight(pathname);
+    const onLeft = contentOnRight(pathname);
+    const camera = useMemo(() => ({ position: [0, 0, 210] as [number, number, number] }), []);
     useEffect(() => {
         if (typeof window !== 'undefined') {
+            try {
             const N = 20;
             const arcsData = [...Array(N).keys()].map(() => ({
                 startLat: (Math.random() - 0.5) * 180,
@@ -40,24 +39,28 @@ const ReactThreeScene: React.FC = () => {
             const scene = new THREE.Scene();
             scene.add(myGlobe);
             setglobe(scene);
+            } catch (error) {
+            console.error(error);
+            }
         }
     }, []);
 
     return (
-        <motion.div
-            className="globe-stage pointer-events-none fixed bottom-[-8vh] right-[-18vw] z-0 h-[58vh] w-[92vw] sm:right-[-8vw] sm:h-[64vh] lg:bottom-auto lg:right-auto lg:top-[8vh] lg:h-[88vh] lg:w-[min(52vw,760px)]"
-            initial={false}
-            animate={{
-                left: onLeft ? "-6vw" : wide ? "calc(100vw - min(52vw, 760px) + 6vw)" : "auto",
-            }}
-            transition={reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 70, damping: 18 }}
+        <div
+            className={`globe-stage pointer-events-none fixed bottom-[-8vh] right-[-18vw] z-0 w-[92vw] sm:right-[-8vw] lg:bottom-auto lg:right-auto ${onLeft ? "on-left" : ""}`}
         >
-            <Canvas className="pointer-events-auto" camera={useMemo(() => ({ position: [0, 0, 210] }), [])} scene={globe}>
+            {globe && (
+            <Canvas
+                className="pointer-events-auto h-full w-full"
+                camera={camera}
+                scene={globe}
+            >
                 <OrbitControls enableZoom={false} dampingFactor={0.1} autoRotate={true} rotateSpeed={0.3} />
                 <ambientLight intensity={Math.PI} />
                 <directionalLight intensity={0.6 * Math.PI} />
             </Canvas>
-        </motion.div>
+            )}
+        </div>
     );
 
 };

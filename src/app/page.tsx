@@ -21,10 +21,10 @@ export default function Home() {
   const years = calculateAge(new Date("2021-09-01"));
 
   return (
-    <article id="profile" className="glass rounded-sm p-6 sm:p-10">
+    <article id="profile" className="glass rounded-sm p-6 sm:p-10 xl:p-12">
       <div className="flex flex-col gap-6">
         <div>
-          <h1 className="font-display text-4xl font-medium leading-tight text-starlight sm:text-5xl">
+          <h1 className="font-display text-4xl font-medium leading-tight text-starlight sm:text-5xl xl:text-6xl">
             M Dicky Maulana
           </h1>
           <p className="mt-3 text-lg text-dust">
@@ -33,7 +33,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
         <Image
-          className="h-28 w-28 shrink-0 rounded-full object-cover ring-1 ring-starlight/30"
+          className="h-28 w-28 shrink-0 rounded-full object-cover ring-1 ring-starlight/30 xl:h-36 xl:w-36"
           src={profilePict}
           alt="Foto M Dicky Maulana"
           priority
